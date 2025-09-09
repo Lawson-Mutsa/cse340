@@ -4,3 +4,276 @@
 *:after {
   box-sizing: border-box;
 }
+:root {
+  --primary-weight: 400;
+  --secondary-weight: 300;
+  --tertiary-weight: 200;
+  --primary-color: #424B54;
+  --secondary-color: #FFFFFF;
+  --primary-font-size: 5vw;
+  --secondary-font-size: 3.5vw;
+  --tertiary-secondary-size: 3vw;
+}
+footer {
+  text-align: center;
+  margin-top: 50px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;  
+  color: var(--primary-color);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  padding-right: 5vw;
+  padding-left: 4vw;
+  
+}
+nav ul{
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--primary-color);
+  padding: 4vw;
+  font-size: 3.2vh;
+}
+nav ul li {
+  color: var(--secondary-color);
+  list-style: none;
+}
+.siteName a {
+   color: var(--primary-color);
+   font-size: 4vh;
+
+} #tools a {
+  color: var(--primary-color);
+  font-size: 3vh;
+}
+a {
+  text-decoration: none;
+}.main {
+  position: relative;
+  width: 300px;
+}
+
+.main img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.submain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* semi-transparent white */
+  padding: 10px;
+  width: 60%; /* adjust as needed */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.submain .title {
+  color: var(--primary-color);
+  font-weight: bold;
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.submain ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+.submain button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+h1 {
+  font-size: 4vh;
+  padding: 2vw;
+}
+h2 {
+  font-size: 4vh;
+  padding: 2vw;
+}
+h3 {
+  font-size: 4vh;
+  padding: 2vw;
+
+}
+#reviews ul {
+  line-height: 1.5;
+  font-size: 3vh;
+  
+}
+#upgrades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+.upgrade {
+  text-align: center;
+}
+
+.upgrade-image {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px; /* Set height for uniformity */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.upgrade img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.upgrade a {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+#upgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+.upgrade {
+  text-align: center;
+}
+
+.upgrade-box {
+  background-color: var(--primary-color); /* Or any blue tone you like */
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.upgrade-box img {
+  max-height: 80px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.upgrade a {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--primary-color);
+  text-decoration: none
+}
+/* ==== Desktop Styles ==== */
+@media (min-width: 960px) {
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav ul {
+    padding: 3vw;
+   font-size: 3vh;
+  }
+
+  /* Hero section (car + overlay box) */
+  .main {
+    width: 100%;
+    max-width: none;
+    position: relative;
+  }
+
+  .main img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .submain {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    width: 320px;
+    height: 200px;
+    background-color: rgba(255,255,255,0.85);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+
+  .submain .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .submain ul {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .submain button {
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+
+  /* Two-column layout for Upgrades + Reviews */
+  #upgrades-wrapper,
+  #reviews {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+  }
+
+  #upgrades-wrapper {
+    margin-right: 2%;
+  }
+
+  #upgrades {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .upgrade-box {
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  #reviews ul {
+    font-size: 1rem;
+    line-height: 3.6;
+    margin-left: 1rem;
+  }
+
+  #reviews h2,
+  #upgrades-wrapper h2 {
+    padding-left: 0;
+    margin-bottom: 1rem;
+  }
+}
