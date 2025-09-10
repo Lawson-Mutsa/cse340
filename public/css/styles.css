@@ -22,7 +22,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
   font-style: normal;  
   color: var(--primary-color);
 }
