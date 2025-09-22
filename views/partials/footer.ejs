@@ -1,5 +1,8 @@
-<% const d = new Date()
-let year = d.getFullYear() %>
 <footer>
-  <p class="copyright">&copy; <%= year %>, CSE 340 App</p>
+  <nav aria-label="Footer Navigation">
+    <a href="/">Home</a> |
+    <a href="/inv">Inventory</a> |
+    <a href="/cause-error">Trigger Error (500)</a>
+  </nav>
+  <p>&copy; <%= new Date().getFullYear() %> Your Site</p>
 </footer>

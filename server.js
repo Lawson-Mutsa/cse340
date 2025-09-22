@@ -6,29 +6,50 @@
  * Require Statements
  *************************/
 const express = require("express")
-const expressLayouts =  require("express-ejs-layouts")
+const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const miscRoutes = require("./routes/miscRoutes")
+const { notFoundHandler, errorHandler } = require("./middleware/errorHandler")
+const utilities = require("./utilities/") 
 const app = express()
 const static = require("./routes/static")
+
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout")
+
+/* ***********************
+ * Middleware
+ *************************/
+app.use(async (req, res, next) => {
+  try {
+    if (req.path !== "/") { 
+      res.locals.nav = await utilities.getNav();
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 /* ***********************
  * Routes
  *************************/
+app.use("/", miscRoutes)
 app.use(static)
-/*
-app.get("/", function(req,res)
-  {res.render("index", {title: "Home"})}
-)*/
 app.get("/", baseController.buildHome)
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Error handlers (should be after routes)
+app.use(notFoundHandler)
+app.use(errorHandler)
 
 /* ***********************
  * Local Server Information

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    /* General page styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      background: #f5f5f5;
+      color: #333;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    main.container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Vehicle detail styles */
+    .detail-wrap { 
+      display: flex; 
+      gap: 1.5rem; 
+      align-items: flex-start; 
+      flex-wrap: wrap; 
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .vehicle-image { 
+      flex: 1 1 480px; 
+      max-width: 800px; 
+    }
+    .vehicle-image img { 
+      width: 100%; 
+      height: auto; 
+      border-radius: 8px; 
+      display: block; 
+    }
+    .vehicle-meta { 
+      flex: 1 1 320px; 
+    }
+    .vehicle-title { 
+      font-size: 1.6rem; 
+      margin-top: 0; 
+    }
+    .vehicle-price { 
+      font-size: 1.25rem; 
+      color: #0a6; 
+      margin: 0.5rem 0; 
+    }
+    .vehicle-mileage, .vehicle-color { 
+      margin: 0.25rem 0; 
+    }
+    .vehicle-specs { 
+      margin-top: 0.5rem; 
+    }
+    .button-back { 
+      display:inline-block; 
+      margin-top: 1rem; 
+      padding: 0.5rem 0.85rem; 
+      background:#007bff; 
+      color:#fff; 
+      border-radius:5px; 
+    }
+
+    .visually-hidden { 
+      position: absolute !important; 
+      height: 1px; 
+      width: 1px; 
+      overflow: hidden; 
+      clip: rect(1px,1px,1px,1px); 
+      white-space: nowrap; 
+    }
+
+    @media (max-width: 700px) { 
+      .detail-wrap { 
+        flex-direction: column; 
+        padding: 1rem; 
+      } 
+    }
+  </style>
+</head>
+<body>
+  <!-- Include header with navigation -->
+
+  <main id="maincontent" class="container">
+    <% if (vehicle) { %>
+      <div class="detail-wrap" role="region" aria-labelledby="vehicleTitle">
+        <figure class="vehicle-image">
+          <img src="<%= vehicle.inv_image || '/images/no-image-available.png' %>" 
+               alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %> <%= vehicle.inv_year %>">
+        </figure>
+
+        <section class="vehicle-meta">
+          <h1 id="vehicleTitle" class="vehicle-title">
+            <%= vehicle.inv_make %> <%= vehicle.inv_model %> (<%= vehicle.inv_year %>)
+          </h1>
+
+          <p class="vehicle-price">
+            <strong>Price:</strong> 
+            <%= new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.inv_price || 0) %>
+          </p>
+
+          <p class="vehicle-mileage">
+            <strong>Mileage:</strong> 
+            <%= vehicle.inv_miles != null ? new Intl.NumberFormat('en-US').format(vehicle.inv_miles) : 'N/A' %> miles
+          </p>
+
+          <p class="vehicle-color">
+            <strong>Color:</strong> <%= vehicle.inv_color || 'Unknown' %>
+          </p>
+
+          <div class="vehicle-specs">
+            <h2 class="visually-hidden">Vehicle Description</h2>
+            <p class="vehicle-description">
+              <%= vehicle.inv_description || 'No additional details available.' %>
+            </p>
+          </div>
+
+          <a href="/inv" class="button-back">Back to Inventory</a>
+        </section>
+      </div>
+    <% } else { %>
+      <p>Vehicle details are not available.</p>
+    <% } %>
+  </main>
+</body>
+</html>

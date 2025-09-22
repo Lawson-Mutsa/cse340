@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/astyle.css">
+  <style>
+    .error-wrap { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background: #fff; border-radius: 6px; }
+    .error-status { font-size: 2rem; color: #b00020; }
+    .error-message { margin-top: .5rem; }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main class="error-wrap" role="main" aria-labelledby="errTitle">
+    <h1 id="errTitle" class="error-status"><%= status %> - Error</h1>
+    <p class="error-message"><%= message %></p>
+
+    <% if (stack) { %>
+      <details>
+        <summary>Server details (development only)</summary>
+        <pre><%= stack %></pre>
+      </details>
+    <% } %>
+
+    <p><a href="/">Return to Home</a></p>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>
