@@ -316,4 +316,136 @@ section {
    #add-ons {
        width: 45%;
    }
+}/* Centering the login content */
+.login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f4f4f4; /* light gray background */
 }
+
+/* Login card container */
+.login-container {
+  background-color: #2c3e50; /* dark navy-blue */
+  padding: 2em;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Form styling */
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+#loginForm label {
+  text-align: left;
+  font-weight: bold;
+}
+
+#loginForm input {
+  padding: 0.75em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
+}
+
+/* Submit button */
+#loginForm button {
+  padding: 0.75em;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#loginForm button:hover {
+  background-color: #2980b9;
+}
+
+/* Flash messages */
+.flash-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.75em;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+
+/* Sign-up link styling */
+.signup-link {
+  margin-top: 1.5em;
+  font-size: 0.95em;
+}
+
+.signup-link a {
+  color: #1abc9c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+.login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f4f4f4;
+}
+
+.login-container {
+  background-color: #2c3e50;
+  padding: 2em;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+form label {
+  text-align: left;
+  font-weight: bold;
+}
+
+form input {
+  padding: 0.75em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+form button {
+  padding: 0.75em;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
+

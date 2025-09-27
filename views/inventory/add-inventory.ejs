@@ -1,0 +1,121 @@
+<main class="inventory-main">
+  <div class="inventory-container">
+    <h1><%= title %></h1>
+
+    <% if (message) { %>
+      <div class="flash-message"><%= message %></div>
+    <% } %>
+
+    <% if (errors && errors.length > 0) { %>
+      <div class="form-errors">
+        <% errors.forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <form action="/inv/add-inventory" method="post" novalidate>
+      <label for="inv_make">Make:</label>
+      <input
+        type="text"
+        id="inv_make"
+        name="inv_make"
+        value="<%= formData ? formData.inv_make : '' %>"
+        required
+        maxlength="50"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_model">Model:</label>
+      <input
+        type="text"
+        id="inv_model"
+        name="inv_model"
+        value="<%= formData ? formData.inv_model : '' %>"
+        required
+        maxlength="50"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_year">Year:</label>
+      <input
+        type="number"
+        id="inv_year"
+        name="inv_year"
+        value="<%= formData ? formData.inv_year : '' %>"
+        required
+        min="1900"
+        max="2099"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_description">Description:</label>
+      <textarea
+        id="inv_description"
+        name="inv_description"
+        rows="4"
+        required
+        maxlength="500"
+      ><%= formData ? formData.inv_description : '' %></textarea>
+
+      <label for="inv_price">Price:</label>
+      <input
+        type="number"
+        id="inv_price"
+        name="inv_price"
+        step="0.01"
+        value="<%= formData ? formData.inv_price : '' %>"
+        required
+        min="0"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_miles">Miles:</label>
+      <input
+        type="number"
+        id="inv_miles"
+        name="inv_miles"
+        value="<%= formData ? formData.inv_miles : '' %>"
+        required
+        min="0"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_color">Color:</label>
+      <input
+        type="text"
+        id="inv_color"
+        name="inv_color"
+        value="<%= formData ? formData.inv_color : '' %>"
+        required
+        maxlength="30"
+        style=" border: 1px solid black"
+      >
+
+      <label for="inv_image">Image Path:</label>
+      <input
+        type="text"
+        id="inv_image"
+        name="inv_image"
+        value="<%= formData ? formData.inv_image : '/images/no-image.png' %>"
+        style=" border: 1px solid black"
+        required
+      >
+
+      <label for="inv_thumbnail">Thumbnail Path:</label>
+      <input
+        type="text"
+        id="inv_thumbnail"
+        name="inv_thumbnail"
+        value="<%= formData ? formData.inv_thumbnail : '/images/no-image-tn.png' %>"
+        style=" border: 1px solid black"
+        required
+      >
+
+      <label for="classificationList">Classification:</label>
+      <%- classificationList %>
+
+      <button type="submit">Add Vehicle</button>
+    </form>
+  </div>
+</main>

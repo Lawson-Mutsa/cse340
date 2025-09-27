@@ -24,31 +24,16 @@ async function getInventoryByClassificationId(classification_id) {
     console.error("getclassificationsbyid error " + error)
   }
 }
-
-
-/**
- * Get vehicle by inv_id (parameterized query).
- * Note: your inventory table uses `inv_miles` (not inv_mileage).
- * Returns row or null.
- * @param {number|string} invId
- */
-async function getVehicleById(invId) {
-  const sql = `
-    SELECT inv_id, inv_make, inv_model, inv_year, inv_description,
-           inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
-    FROM inventory
-    WHERE inv_id = $1
-    LIMIT 1;
-  `;
-  const values = [invId];
-
+async function addClassification(classification_name) {
   try {
-    const result = await pool.query(sql, values);
-    if (result.rows.length === 0) return null;
-    return result.rows[0];
-  } catch (err) {
-    throw err; // controller's try/catch will forward to error middleware
+    const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
+    const result = await pool.query(sql, [classification_name])
+    return result.rows[0]
+  } catch (error) {
+    console.error("addClassification error:", error)
+    return null
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById};
+
+module.exports = {getClassifications, getInventoryByClassificationId}

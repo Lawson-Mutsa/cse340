@@ -1,0 +1,12 @@
+<main class="inventory-management">
+  <h1>Inventory Management</h1>
+
+  <% if (typeof message !== 'undefined') { %>
+    <div class="flash-message"><%= message %></div>
+  <% } %>
+
+  <ul>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
+  </ul>
+</main>

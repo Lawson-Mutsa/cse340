@@ -85,5 +85,18 @@ utilities.buildVehicleDetailHtml = function (vehicle) {
   `;
 };
 
-// Export the utilities object
+// ************************
+// Build classification select list (for add-inventory form)
+// ************************
+utilities.buildClassificationList = async function (selectedId = null) {
+  const data = await invModel.getClassifications();
+  let classificationList = '<select name="classification_id" id="classificationList" required>';
+  classificationList += '<option value="">Choose a Classification</option>';
+  data.rows.forEach(row => {
+    classificationList += `<option value="${row.classification_id}"${row.classification_id == selectedId ? " selected" : ""}>${row.classification_name}</option>`;
+  });
+  classificationList += '</select>';
+  return classificationList;
+};
+
 module.exports = utilities;
